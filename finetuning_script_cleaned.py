@@ -16,7 +16,7 @@ model_name = "meta-llama/Llama-2-13b-chat-hf" # lama
 new_model_name = "llama-2-finetuned-large-dataset" # lama
 
 #hub_repo_name = "LisaSchunke/phi-3-peft-finetuned-large-dataset" # phi
-hub_repo_name = "LisaSchunke/llama-3-peft-finetuned-large-dataset" # lama
+hub_repo_name = "LisaSchunke/llama-2-peft-finetuned-large-dataset" # lama
 
 '''target_modules = ['qkv_proj', 'o_proj', 'gate_up_proj', 'down_proj'] #print(model) will show the modules to use'''
 
