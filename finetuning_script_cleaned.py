@@ -74,7 +74,7 @@ def load_model_and_tokenizer(model_name):
     return lora_model, tokenizer
 
 
-def load_dataset():
+def load_dataset_custom():
     #Load a slice of the WebGLM dataset for training and merge validation/test datasets
     #train_dataset_soll_zwei = load_dataset("prsdm/medquad-phi2-1k", split="train")
     #train_dataset_soll = load_dataset("philschmid/dolly-15k-oai-style")
@@ -171,7 +171,7 @@ def save_and_upload_model(trainer, new_model_name, hub_repo_name):
 
 if __name__ == "__main__":
     lora_model, tokenizer = load_model_and_tokenizer(model_name)
-    train_data, test_data = load_dataset()
+    train_data, test_data = load_dataset_custom()
     trainer = train(lora_model, tokenizer, train_data, test_data)   
     save_and_upload_model(trainer, new_model_name, hub_repo_name)
 
