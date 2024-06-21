@@ -78,8 +78,8 @@ def load_dataset_custom():
     #Load a slice of the WebGLM dataset for training and merge validation/test datasets
     #train_dataset_soll_zwei = load_dataset("prsdm/medquad-phi2-1k", split="train")
     #train_dataset_soll = load_dataset("philschmid/dolly-15k-oai-style")
-    train_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:50]",token=True)
-    test_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:10]",token=True)
+    train_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:5000]",token=True)
+    test_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:100]",token=True)
 
     return train_data, test_data
 
