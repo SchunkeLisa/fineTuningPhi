@@ -43,7 +43,7 @@ def load_model_and_tokenizer(model_name):
     # Setting up the tokenizer for Phi-2
     tokenizer = AutoTokenizer.from_pretrained(model_name,
                                             #add_eos_token=True,
-                                            trust_remote_code=True,model_max_length=2048,use_auth_token=True)
+                                            trust_remote_code=True,model_max_length=2048,token=True)
     #tokenizer.pad_token = tokenizer.eos_token
     #tokenizer.truncation_side = "left"
 
@@ -78,8 +78,8 @@ def load_dataset_custom():
     #Load a slice of the WebGLM dataset for training and merge validation/test datasets
     #train_dataset_soll_zwei = load_dataset("prsdm/medquad-phi2-1k", split="train")
     #train_dataset_soll = load_dataset("philschmid/dolly-15k-oai-style")
-    train_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:50]",use_auth_token=True)
-    test_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:10]",use_auth_token=True)
+    train_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:50]",token=True)
+    test_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:10]",token=True)
 
     return train_data, test_data
 
@@ -159,14 +159,14 @@ def save_and_upload_model(trainer, new_model_name, hub_repo_name):
     trainer.save_model(new_model_name)
 
     #new_model_name = "LisaSchunke/phi-3-peft-finetuned-large-dataset"
-    base_model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True,use_auth_token=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True,use_auth_token=True)
+    base_model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True,token=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True,token=True)
 
     model = PeftModel.from_pretrained(base_model, new_model_name)
     model = model.merge_and_unload()
     notebook_login()
-    model.push_to_hub(hub_repo_name,use_auth_token=True)
-    tokenizer.push_to_hub(hub_repo_name,use_auth_token=True)
+    model.push_to_hub(hub_repo_name,token=True)
+    tokenizer.push_to_hub(hub_repo_name,token=True)
 
 
 if __name__ == "__main__":
