@@ -18,9 +18,9 @@ new_model_name = "llama-2-7b-finetuned-15000-dataset" # lama
 #hub_repo_name = "LisaSchunke/phi-3-128k-peft-finetuned-15000-dataset" # phi
 hub_repo_name = "LisaSchunke/llama-2-7b-peft-finetuned-15000-dataset" # lama
 
-target_modules = ['qkv_proj', 'o_proj', 'gate_up_proj', 'down_proj'] #print(model) will show the modules to use
+#target_modules = ['qkv_proj', 'o_proj', 'gate_up_proj', 'down_proj'] #print(model) will show the modules to use
 
-#target_modules = ["q_proj","v_proj","k_proj","o_proj","gate_proj","up_proj","down_proj","lm_head"] # for lama
+target_modules = ["q_proj","v_proj","k_proj","o_proj","gate_proj","up_proj","down_proj","lm_head"] # for lama
 
 
 
