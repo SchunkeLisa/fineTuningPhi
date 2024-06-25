@@ -13,10 +13,10 @@ model_name = "microsoft/Phi-3-mini-128k-instruct"
 #model_name = "meta-llama/Llama-2-7b-chat-hf" # lama
 
 new_model_name = "phi-3-128k-finetuned-20000-dataset" # phi
-#new_model_name = "llama-2-7b-finetuned-20000-dataset" # lama
+#new_model_name = "llama-2-7b-finetuned-30000-dataset" # lama
 
 hub_repo_name = "LisaSchunke/phi-3-128k-peft-finetuned-20000-dataset" # phi
-#hub_repo_name = "LisaSchunke/llama-2-7b-peft-finetuned-20000-dataset" # lama
+#hub_repo_name = "LisaSchunke/llama-2-7b-peft-finetuned-30000-dataset" # lama
 
 target_modules = ['qkv_proj', 'o_proj', 'gate_up_proj', 'down_proj'] #print(model) will show the modules to use
 
@@ -78,8 +78,8 @@ def load_dataset_custom():
     #Load a slice of the WebGLM dataset for training and merge validation/test datasets
     #train_dataset_soll_zwei = load_dataset("prsdm/medquad-phi2-1k", split="train")
     #train_dataset_soll = load_dataset("philschmid/dolly-15k-oai-style")
-    train_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:20000]",token=True)
-    test_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:5000]",token=True)
+    train_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:30000]",token=True)
+    test_data = load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:7500]",token=True)
 
     return train_data, test_data
 
