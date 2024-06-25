@@ -8,15 +8,15 @@ from trl import SFTTrainer, SFTConfig
 from huggingface_hub import notebook_login
 
 
-model_name = "microsoft/Phi-3-mini-128k-instruct"
+#model_name = "microsoft/Phi-3-mini-128k-instruct"
 #model_name = "microsoft/Phi-3-mini-4k-instruct" # phi
-#model_name = "meta-llama/Llama-2-7b-chat-hf" # lama
+model_name = "meta-llama/Llama-2-7b-chat-hf" # lama
 
-new_model_name = "phi-3-128k-finetuned-15000-dataset" # phi
-#new_model_name = "llama-2-7b-finetuned-30000-dataset" # lama
+#new_model_name = "phi-3-128k-finetuned-15000-dataset" # phi
+new_model_name = "llama-2-7b-finetuned-15000-dataset" # lama
 
-hub_repo_name = "LisaSchunke/phi-3-128k-peft-finetuned-15000-dataset" # phi
-#hub_repo_name = "LisaSchunke/llama-2-7b-peft-finetuned-30000-dataset" # lama
+#hub_repo_name = "LisaSchunke/phi-3-128k-peft-finetuned-15000-dataset" # phi
+hub_repo_name = "LisaSchunke/llama-2-7b-peft-finetuned-15000-dataset" # lama
 
 target_modules = ['qkv_proj', 'o_proj', 'gate_up_proj', 'down_proj'] #print(model) will show the modules to use
 
