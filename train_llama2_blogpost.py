@@ -16,7 +16,7 @@ def train_llama2(model_id):
         output = data["output"]
         prompt = f"<s>[INST] {instruction} [/INST] {output} </s>"
         return {'text': prompt}
-    train_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:50]")
+    train_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:20]")
     test_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:5]")
     print(train_dataset[:5])
     
@@ -76,8 +76,12 @@ def train_llama2(model_id):
     tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "right"
     
-    model.save_pretrained("llama-tuned")
-    tokenizer.save_pretrained("llama-tuned")
+    # push model to hub
+    hub_repo_name = "LisaSchunke/llama-2-7b-blogpost-finetuned-20000-dataset" # lama
+    model.push_to_hub(hub_repo_name,token=True)
+    tokenizer.push_to_hub(hub_repo_name,token=True)
+    #model.save_pretrained("llama-tuned")
+    #tokenizer.save_pretrained("llama-tuned")
     
 model.authenticate_hf()
 train_llama2(IDENTIFIER_LLAMA_2_7B_CHAT_HF) 
