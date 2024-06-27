@@ -14,8 +14,8 @@ def train_llama2(model_id):
         output = data["output"]
         prompt = f"<s>[INST] {instruction} [/INST] {output} </s>"
         return {'text': prompt}
-    train_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:20000]")
-    test_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:5000]")
+    train_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:2000]")
+    test_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:500]")
     print(train_dataset[:5])
     
     # Model and tokenizer names
@@ -40,7 +40,7 @@ def train_llama2(model_id):
         optim="paged_adamw_32bit",
         save_steps=5,
         logging_steps=1,
-        learning_rate=2e-4,
+        learning_rate=1e-4,
         weight_decay=0.001,
         fp16=False,
         bf16=False,
@@ -75,7 +75,7 @@ def train_llama2(model_id):
     tokenizer.padding_side = "right"
     
     # push model to hub
-    hub_repo_name = "LisaSchunke/llama-2-7b-blogpost-finetuned-20000-dataset" # lama
+    hub_repo_name = "LisaSchunke/llama-2-7b-blogpost-finetuned-2000-dataset" # lama
     model.push_to_hub(hub_repo_name,token=True)
     tokenizer.push_to_hub(hub_repo_name,token=True)
     #model.save_pretrained("llama-tuned")
