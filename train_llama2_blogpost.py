@@ -1,4 +1,4 @@
-import datasets
+fimport datasets
 import transformers
 import peft
 import torch
@@ -49,7 +49,7 @@ def train_llama2(model_id):
         warmup_ratio=0.03,
         group_by_length=True,
         lr_scheduler_type="constant",
-        report_to="tensorboard"
+        #report_to="tensorboard"
     )
     fine_tuning = trl.SFTTrainer(model=base_model,train_dataset=train_dataset,peft_config=peft_parameters,dataset_text_field="text",tokenizer=tokenizer,args=train_params)
     fine_tuning.train()
