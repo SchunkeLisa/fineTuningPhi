@@ -14,8 +14,8 @@ def train_llama2(model_id):
         output = data["output"]
         prompt = f"<s>[INST] {instruction} [/INST] {output} </s>"
         return {'text': prompt}
-    train_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:20]")
-    test_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:5]")
+    train_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="train[0:20000]")
+    test_dataset = datasets.load_dataset("LisaSchunke/finetuning_dataset_TSAC", split="test[0:5000]")
     print(train_dataset[:5])
     
     # Model and tokenizer names
