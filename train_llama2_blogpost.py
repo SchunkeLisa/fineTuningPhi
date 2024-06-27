@@ -3,7 +3,6 @@ import transformers
 import peft
 import torch
 import trl
-from models import model
 
 IDENTIFIER_LLAMA_2_7B_CHAT_HF = "meta-llama/Llama-2-7b-chat-hf"
    
@@ -82,5 +81,5 @@ def train_llama2(model_id):
     #model.save_pretrained("llama-tuned")
     #tokenizer.save_pretrained("llama-tuned")
     
-model.authenticate_hf()
+
 train_llama2(IDENTIFIER_LLAMA_2_7B_CHAT_HF) 
