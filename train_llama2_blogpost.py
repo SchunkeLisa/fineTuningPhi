@@ -1,12 +1,11 @@
 import datasets
 import transformers
 import peft
-from models import llama2
 import torch
 import trl
 from models import model
 
-IDENTIFIER_LLAMA_2_7B_CHAT_HF = llama2.IDENTIFIER_LLAMA_2_7B_CHAT_HF
+IDENTIFIER_LLAMA_2_7B_CHAT_HF = "meta-llama/Llama-2-7b-chat-hf"
    
    
 #NOTE - following this blog post https://medium.com/@gobishangar11/llama-2-a-detailed-guide-to-fine-tuning-the-large-language-model-8968f77bcd15
